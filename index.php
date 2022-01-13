@@ -30,7 +30,7 @@ window.location.href = 'login.html';
                         <li><a href="#">Ao Vivo</a></li>
                         <li class="btn">
                             <button class="btn-register"><a href="?logout=1">Logout</a></button>
-                            <button class="btn-login"><a href="login.html">Login<?php echo $_SESSION['email']?></a></button>
+                            <button class="btn-login"><a href="login.html"><?php echo $_SESSION['email']?></a></button>
                         </li>
                     </ul>
                 </div>
@@ -44,7 +44,7 @@ window.location.href = 'login.html';
         </section>
         <div class="case-box-matchers">
             <div id="jogo" class="case-produto">
-                <a href="aposta.php">
+                <a href="aposta1.php">
                     <h4 class="time-name" >Time 1</h4>
                     <h4 class="time-name" >X</h4>
                     <h4 class="time-name" >Time 2</h4>
@@ -57,7 +57,23 @@ window.location.href = 'login.html';
             </div>
             <div id="casa" class="case-produto" onclick="escolheCasa()">
                 <h4 class="time-name">Casa</h4>
-                <p class="preco"><?php echo $montante_a?></p>
+                <p class="preco">
+                    
+                <?php
+                require_once("php/conexao.php");
+                $sql_game = "SELECT *FROM tb_game WHERE id_game = 1;";
+                $result = mysqli_query($conection, $sql_game);
+
+                if (mysqli_num_rows($result)!=0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        $nome_jogo = $row['nome_game'];
+                        $montante_a = $row['mont_a'];
+                        $montante_empate = $row['mont_empate'];
+                        $montante_b = $row['mont_b'];
+                    }
+                }              
+                
+                echo $montante_a?></p>
             </div>
             <div id="empate" class="case-produto" onclick="escolheEmpate()">
                 <h4 class="time-name">Empate</h4>
@@ -70,7 +86,7 @@ window.location.href = 'login.html';
         </div>
         <div class="case-box-matchers">
             <div id="jogo" class="case-produto">
-                <a href="aposta.php">
+                <a href="aposta2.php">
                     <h4 class="time-name" >Time 1</h4>
                     <h4 class="time-name" >X</h4>
                     <h4 class="time-name" >Time 2</h4>
@@ -83,15 +99,30 @@ window.location.href = 'login.html';
             </div>
             <div id="casa1" class="case-produto" onclick="escolheCasa1()">
                 <h4 class="time-name">Casa</h4>
-                <p class="preco"><?php echo $montante_a?></p>
+                <p class="preco"><?php 
+                
+                require_once("php/conexao.php");
+                $sql_game = "SELECT *FROM tb_game WHERE id_game = 2;";
+                $result = mysqli_query($conection, $sql_game);
+
+                if (mysqli_num_rows($result)!=0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        $nome_jogo2 = $row['nome_game'];
+                        $montante_a2 = $row['mont_a'];
+                        $montante_empate2 = $row['mont_empate'];
+                        $montante_b2 = $row['mont_b'];
+                    }
+                }
+                
+                echo $montante_a2?></p>
             </div>
             <div id="empate1" class="case-produto" onclick="escolheEmpate1()">
                 <h4 class="time-name">Empate</h4>
-                <p class="preco"><?php echo $montante_empate?></p>
+                <p class="preco"><?php echo $montante_empate2?></p>
             </div>
             <div id="fora1" class="case-produto" onclick="escolheFora1()">
                 <h4 class="time-name">Fora</h4>
-                <p class="preco"><?php echo $montante_b?></p>
+                <p class="preco"><?php echo $montante_b2?></p>
             </div>
         </div>
     </div>
