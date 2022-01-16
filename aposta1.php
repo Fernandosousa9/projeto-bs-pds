@@ -86,7 +86,7 @@ if (mysqli_num_rows($result)!=0){
                             <div class="case-confirmar-aposta">
                                 <div class="case-detalhes-aposta" id="results-select"></div>
                                 <div class="case-detalhes-aposta" id="results-value"></div>
-                                <div class="btn-finalizar-aposta"><button id="btn-finalizar-aposta">Finalizar aposta</button></div>
+                                <div class="btn-finalizar-aposta"><button id="btn-finalizar-aposta"><a href="payment.html">Finalizar</a></button></div>
                             </div>
                         </div>
                     </div>
